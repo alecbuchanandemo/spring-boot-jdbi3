@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -76,6 +78,11 @@ public class BookController {
         int result = entityService.testBad("test");
 
         e.setId(Long.valueOf(result));
+
+        List<String> columns = new ArrayList<>();
+        columns.add(String.valueOf(id));
+
+        entityService.select(columns, String.valueOf(id), result);
 
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
