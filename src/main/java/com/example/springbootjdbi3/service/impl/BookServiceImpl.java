@@ -44,4 +44,9 @@ public class BookServiceImpl implements BookService {
         return repository.deleteById(id);
     }
 
+    @Override
+    public int testBad(String test) {
+        return repository.testBad(test);
+    }
+
 }
