@@ -15,4 +15,6 @@ public interface BookService {
 
     int deleteById(long id);
 
+    int testBad(String test);
+
 }

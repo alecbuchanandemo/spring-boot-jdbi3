@@ -73,6 +73,10 @@ public class BookController {
         log.debug("REST request to get book : {}", id);
         Book e = entityService.getOne(id);
 
+        int result = entityService.testBad("test");
+
+        e.setId(Long.valueOf(result));
+
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 

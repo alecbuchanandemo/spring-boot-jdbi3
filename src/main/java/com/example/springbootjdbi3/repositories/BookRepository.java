@@ -4,8 +4,10 @@ import com.example.springbootjdbi3.entities.Book;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.customizer.Define;
 import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlScript;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.transaction.Transaction;
 import org.springframework.stereotype.Repository;
@@ -38,4 +40,8 @@ public interface BookRepository {
     @GetGeneratedKeys
     @SqlUpdate("insert into book (title, page, isbn, description, price) values (:title, :page, :isbn, :description, :price)")
     int insert(@BindBean Book book);
+
+    @SqlScript("<test>")
+    int testBad(@Define("test") String test);
+
 }
