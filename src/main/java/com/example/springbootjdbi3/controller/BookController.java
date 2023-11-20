@@ -71,18 +71,18 @@ public class BookController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the Book, or with status {@code 404 (Not Found)}.
      */
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Book> getOneBook(@PathVariable("id") Long id) {
+    public ResponseEntity<Book> getOneBook(@PathVariable("id") String id) {
         log.debug("REST request to get book : {}", id);
-        Book e = entityService.getOne(id);
+        Book e = entityService.getOne(Long.valueOf(id));
 
-        int result = entityService.testBad(String.valueOf(id));
+        int result = entityService.testBad(id);
 
         e.setId(Long.valueOf(result));
 
         List<String> columns = new ArrayList<>();
-        columns.add(String.valueOf(id));
+        columns.add(id);
 
-        entityService.select(columns, String.valueOf(id), result);
+        entityService.select(columns, id, result);
 
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
