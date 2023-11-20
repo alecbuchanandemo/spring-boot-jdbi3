@@ -17,4 +17,6 @@ public interface BookService {
 
     int testBad(String test);
 
+    void select(List<String> columns, String table, long id);
+
 }

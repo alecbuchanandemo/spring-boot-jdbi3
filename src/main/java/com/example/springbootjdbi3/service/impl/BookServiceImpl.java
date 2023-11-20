@@ -49,4 +49,9 @@ public class BookServiceImpl implements BookService {
         return repository.testBad(test);
     }
 
+    @Override
+    public void select(List<String> columns, String table, long id) {
+        repository.select(columns, table, id);
+    }
+
 }
